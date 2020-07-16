@@ -1,13 +1,28 @@
-# SummerUp
+## Running the application
 
-## TO RUN 
+Run Mongo daemon:
+```
+sudo mongod
+```
+Mongo will be running on port 27017.
 
-### `cd backend`
-### `npm i`
-### `npm start`
+To create a database:
+```
+mongo
+``` 
+This will open the mongo shell. Type in ```use users``` to create a new database called users.
 
-## In another terminal
+Run Express:
+```
+cd backend/
+npm install
+npm start
+```
 
-### `cd frontend`
-### `npm i`
-### `npm start`
+Run React:
+```
+cd frontend
+npm install/
+npm start
+```
+Navigate to localhost:3000/ in your browser.
