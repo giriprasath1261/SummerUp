@@ -10,7 +10,7 @@ To create a database:
 ```
 mongo
 ``` 
-This will open the mongo shell. Type in ```use summerup``` to create a new database called users.
+This will open the mongo shell. Type in ```use summerup``` to create a new database called summerup.
 
 Run Express:
 ```
