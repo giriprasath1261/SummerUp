@@ -7,7 +7,7 @@ const app = express();
 const PORT = 4000;
 const userRoutes = express.Router();
 
-let Grocery = require('./models/groceries');
+let Product = require('./models/products');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -20,21 +20,21 @@ connection.once('open', function() {
 })
 
 //Get all groceries
-userRoutes.route('/groceries').get(function(req,res) {
-	Grocery.find(function(err, groceries) {
+userRoutes.route('/products').get(function(req,res) {
+	Product.find({"aisle_id":135},function(err, products) {
 		if(err) {
 			console.log(err);
 		} else {
-			res.json(groceries);
+			res.json(products);
 		}
 	});
 });
 
 //Get groceries by aisle_id
-userRoutes.route('/groceries/search/:aisle_id').get(function(req, res) {
+userRoutes.route('/products/aisle/:aisle_id').get(function(req, res) {
   let aisle_id = req.params.aisle_id;
-  Product.find({"aisle_id":aisle_id},function(err, grocery) {
-      res.json(grocery);
+  Product.find({"aisle_id":aisle_id},function(err, products) {
+      res.json(products);
   });
 });
 

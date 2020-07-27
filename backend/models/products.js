@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-let Grocery = new mongoose.Schema({
+let Product = new mongoose.Schema({
     product_id: {
         type: Number
     },
@@ -15,4 +15,4 @@ let Grocery = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model('Grocery', Grocery);
+module.exports = mongoose.model('Product', Product);
