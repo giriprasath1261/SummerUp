@@ -8,6 +8,8 @@ const PORT = 4000;
 const userRoutes = express.Router();
 
 let Product = require('./models/products');
+let Keyword = require('./models/keywords');
+let Aisle = require('./models/aisles');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -37,6 +39,33 @@ userRoutes.route('/products/aisle/:aisle_id').get(function(req, res) {
       res.json(products);
   });
 });
+
+//Get all keywords
+userRoutes.route('/keywords').get(function(req,res) {
+	Keyword.find(function(err,keywords) {
+		if(err) {
+			console.log(err);
+		} else {
+			res.json(keywords);
+		}
+	});
+});
+
+//Get aisles of a keywords
+userRoutes.route('/keywords/find/:keyword').get(function(req,res) {
+	let keyword = req.params.keyword;
+	Keyword.find({"keyword": keyword}, function(err,keywords) {
+		res.json(keywords);
+	}); 
+});
+
+//Find aisle with aisle id
+userRoutes.route('/aisles/:aisle_id').get(function(req,res) {
+	let aisle_id = req.params.aisle_id;
+	Aisle.find({"aisle_id": aisle_id}, function(err,aisles) {
+		res.json(aisles);
+	})
+})
 
 app.use('/',userRoutes);
 
