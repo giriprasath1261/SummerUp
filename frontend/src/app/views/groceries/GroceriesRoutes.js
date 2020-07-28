@@ -1,13 +1,21 @@
 import { MatxLoadable } from "matx";
 
-const GroceryList = MatxLoadable({
-  loader: () => import("./GroceryList")
+const GroceryAisle = MatxLoadable({
+  loader: () => import("./GroceryAisle")
+});
+
+const GroceryKeyword = MatxLoadable({
+  loader: () => import("./GroceryKeyword")
 });
 
 const groceriesRoutes = [
   {
-    path: "/groceries",
-    component: GroceryList
+    path: "/grocery/aisle",
+    component: GroceryAisle
+  },
+  {
+  	path: "/grocery/keyword",
+  	component: GroceryKeyword
   }
 ];
 

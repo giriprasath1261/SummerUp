@@ -23,7 +23,18 @@ export const navigations = [
   {
     name: "Groceries",
     icon: "shopping_cart",
-    path: "/groceries"
+    children: [
+      {
+        name: "ByAisle",
+        path: "/grocery/aisle",
+        iconText: "A"
+      },
+      {
+        name: "ByKeyword",
+        path: "/grocery/keyword",
+        iconText: "K"
+      }
+    ]
   },
   {
     name: "Drag and Drop",

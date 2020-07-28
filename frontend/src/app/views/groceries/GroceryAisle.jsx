@@ -14,7 +14,7 @@ import { Breadcrumb, SimpleCard } from "matx";
 import { Button, Fab } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-class GroceryList extends Component {
+class GroceryAisle extends Component {
 
   constructor(props) {
       super(props);
@@ -72,7 +72,7 @@ class GroceryList extends Component {
           </div>
         </form>
         </center>
-        <SimpleCard title="Simple Table">
+        <SimpleCard title="Products">
           <Table style={{ whiteSpace: "pre" }}>
             <TableHead>
               <TableRow>
@@ -113,4 +113,4 @@ class GroceryList extends Component {
   }
 }
 
-export default GroceryList;
+export default GroceryAisle;
