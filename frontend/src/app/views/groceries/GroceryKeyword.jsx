@@ -59,6 +59,7 @@ class GroceryKeyword extends Component {
         console.log(error);
       })
     this.setState({ aisles: [] });
+    this.setState({ groceries: [] });
     this.state.aisle_ids.map((aisle_id, index)=>(
       axios.get('http://localhost:4000/aisles/'+ aisle_id)
         .then(response => {
