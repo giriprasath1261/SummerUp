@@ -12,6 +12,7 @@ import formsRoutes from "./views/forms/FormsRoutes";
 import mapRoutes from "./views/map/MapRoutes";
 import groceriesRoutes from "./views/groceries/GroceriesRoutes";
 import cartRoutes from "./views/cart/CartRoutes";
+import navigationRoutes from "./views/navigation/NavigationRoutes";
 
 
 const redirectRoute = [
@@ -38,6 +39,7 @@ const routes = [
   ...mapRoutes,
   ...groceriesRoutes,
   ...cartRoutes,
+  ...navigationRoutes,
   ...redirectRoute,
   ...errorRoute
 ];

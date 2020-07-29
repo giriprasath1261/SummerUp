@@ -16,7 +16,7 @@ const StatCards = ({theme}) => {
             <div className="ml-12">
               <h6 className="m-0 mt-4 text-primary font-weight-500">Groceries</h6>
               <br/>
-              <img src="/assets/images/groceries.jpg" width="300" height="200"/>
+              
             </div>
           </div>
           <Tooltip title="View Details" placement="top">
@@ -32,7 +32,7 @@ const StatCards = ({theme}) => {
             <div className="ml-12">
               <h6 className="m-0 mt-4 text-primary font-weight-500">Medicines</h6>
               <br/>
-              <img src="/assets/images/medicines.png" width="300" height="200"/>
+              
             </div>
           </div>
           <Tooltip title="View Details" placement="top">
@@ -48,7 +48,7 @@ const StatCards = ({theme}) => {
             <div className="ml-12">
               <h6 className="m-0 mt-4 text-primary font-weight-500">Fruits & Vegetables</h6>
               <br/>
-              <img src="/assets/images/fruits.jpg" width="300" height="200"/>
+              
             </div>
           </div>
           <Tooltip title="View Details" placement="top">
@@ -64,7 +64,7 @@ const StatCards = ({theme}) => {
             <div className="ml-12">
               <h6 className="m-0 mt-4 text-primary font-weight-500">Electronics</h6>
               <br/>
-              <img src="/assets/images/electronics.jpeg" width="300" height="200"/>
+              
             </div>
           </div>
           <Tooltip title="View Details" placement="top">

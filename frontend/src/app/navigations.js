@@ -37,6 +37,11 @@ export const navigations = [
     ]
   },
   {
+    name: "Navigation",
+    path: "/navigation",
+    icon: "explore"
+  },
+  {
     name: "UI Kits",
     icon: "favorite",
     badge: { value: "50+", color: "secondary" },
