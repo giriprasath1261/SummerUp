@@ -77,9 +77,6 @@ class Layout1Topbar extends Component {
                 </IconButton>
               </div>
               <div className="flex flex-middle">
-                <MatxSearchBox />
-
-                <NotificationBar />
 
                 <IconButton href="http://localhost:3000/cart">
                   <Icon>shopping_cart</Icon>
@@ -99,22 +96,6 @@ class Layout1Topbar extends Component {
                       <Icon> home </Icon>
                       <span className="pl-16"> Home </span>
                     </Link>
-                  </MenuItem>
-                  <MenuItem style={{ minWidth: 185 }}>
-                    <Link
-                      className="flex flex-middle"
-                      to="/page-layouts/user-profile"
-                    >
-                      <Icon> person </Icon>
-                      <span className="pl-16"> Profile </span>
-                    </Link>
-                  </MenuItem>
-                  <MenuItem
-                    className="flex flex-middle"
-                    style={{ minWidth: 185 }}
-                  >
-                    <Icon> settings </Icon>
-                    <span className="pl-16"> Settings </span>
                   </MenuItem>
                   <MenuItem
                     onClick={this.handleSignOut}
