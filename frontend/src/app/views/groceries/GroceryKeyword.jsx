@@ -31,6 +31,7 @@ class GroceryKeyword extends Component {
       }
       this.onChangeKeyword = this.onChangeKeyword.bind(this);
       this.onSubmit = this.onSubmit.bind(this);
+      this.addToCart = this.addToCart.bind(this);
   }
 
   componentDidMount() {
@@ -88,6 +89,15 @@ class GroceryKeyword extends Component {
       .catch(function(error) {
         console.log(error);
       })
+  }
+
+  addToCart(e) {
+    e.preventDefault();
+    console.log(this.state.product);
+    const newProduct = this.state.product;
+    axios.post('http://localhost:4000/cart/add',newProduct)
+      .then(res => console.log(res.data));
+    window.alert("item added to cart")
   }
 
 
@@ -168,6 +178,7 @@ class GroceryKeyword extends Component {
                 <TableCell className="px-0">ProductName</TableCell>
                 <TableCell className="px-0">AisleID</TableCell>
                 <TableCell className="px-0">DepartmentID</TableCell>
+                <TableCell className="px-0">AddToCart</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -186,8 +197,8 @@ class GroceryKeyword extends Component {
                     {currentGrocery.department_id}
                   </TableCell>
                   <TableCell className="px-0">
-                    <IconButton>
-                      <Icon color="error">close</Icon>
+                    <IconButton onClick={(e) => {this.setState({ product: currentGrocery}); this.addToCart(e)}}>
+                      <Icon color="error">shopping_cart</Icon>
                     </IconButton>
                   </TableCell>
                 </TableRow>
