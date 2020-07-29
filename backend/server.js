@@ -10,6 +10,8 @@ const userRoutes = express.Router();
 let Product = require('./models/products');
 let Keyword = require('./models/keywords');
 let Aisle = require('./models/aisles');
+let Recommendation = require('./models/recommendations');
+let Cart = require('./models/cart');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -40,6 +42,14 @@ userRoutes.route('/products/aisle/:aisle_id').get(function(req, res) {
   });
 });
 
+//get product by product id
+userRoutes.route('/products/find/:product_id').get(function(req, res) {
+  let product_id = req.params.product_id;
+  Product.find({"product_id":product_id},function(err, products) {
+      res.json(products);
+  });
+});
+
 //Get all keywords
 userRoutes.route('/keywords').get(function(req,res) {
 	Keyword.find(function(err,keywords) {
@@ -66,6 +76,40 @@ userRoutes.route('/aisles/:aisle_id').get(function(req,res) {
 		res.json(aisles);
 	})
 })
+
+//Get recommendation assuming user 0
+userRoutes.route('/recommendations').get(function(req,res) {
+	Recommendation.find({"user_id": 1}, function(err,recommendations) {
+		if(err) {
+			console.log(err);
+		} else {
+			res.json(recommendations);
+		}
+	});
+});
+
+//Add to cart
+userRoutes.route('/cart/add').post(function(req, res) {
+  let cart = new Cart(req.body);
+  cart.save()
+  	.then(cart => {
+    	res.status(200).json({'Cart': 'Product added successfully'});
+  	})
+  	.catch(err => {
+    	res.status(400).send('Error');
+  	});
+});
+
+//Get items in cart
+userRoutes.route('/cart').get(function(req,res) {
+	Cart.find(function(err, carts) {
+		if(err) {
+			console.log(err);
+		} else {
+			res.json(carts);
+		}
+	});
+});
 
 app.use('/',userRoutes);
 

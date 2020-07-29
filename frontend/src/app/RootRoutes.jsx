@@ -11,6 +11,7 @@ import dragAndDropRoute from "./views/Drag&Drop/DragAndDropRoute";
 import formsRoutes from "./views/forms/FormsRoutes";
 import mapRoutes from "./views/map/MapRoutes";
 import groceriesRoutes from "./views/groceries/GroceriesRoutes";
+import cartRoutes from "./views/cart/CartRoutes";
 
 
 const redirectRoute = [
@@ -36,6 +37,7 @@ const routes = [
   ...formsRoutes,
   ...mapRoutes,
   ...groceriesRoutes,
+  ...cartRoutes,
   ...redirectRoute,
   ...errorRoute
 ];

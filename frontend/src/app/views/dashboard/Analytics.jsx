@@ -2,18 +2,22 @@ import React, { Component, Fragment } from "react";
 import { Slide } from 'react-slideshow-image';
 import {
   Grid,
-  Card
+  Card,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  Icon,
+  IconButton
 } from "@material-ui/core";
+import axios from 'axios';
 
 import DoughnutChart from "../charts/echarts/Doughnut";
 
-import ModifiedAreaChart from "./shared/ModifiedAreaChart";
+
 import StatCards from "./shared/StatCards";
 import TableCard from "./shared/TableCard";
-import RowCards from "./shared/RowCards";
-import StatCards2 from "./shared/StatCards2";
-import UpgradeCard from "./shared/UpgradeCard";
-import Campaigns from "./shared/Campaigns";
 import BasicMap from "./shared/BasicMap";
 import { withStyles } from "@material-ui/styles";
 import 'react-slideshow-image/dist/styles.css'
@@ -25,7 +29,56 @@ const slideImages = [
 ];
 
 class Dashboard1 extends Component {
-  state = {};
+
+  constructor(props) {
+      super(props);
+      this.state = {
+        productList: Array(),
+        recommendations: [],
+        product: ''
+      }
+      this.onSubmit = this.onSubmit.bind(this);
+      this.addToCart = this.addToCart.bind(this);
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:4000/recommendations')
+      .then(response => {
+        this.setState({recommendations: response.data});
+        console.log(this.state.recommendations);
+      })
+      .catch(function(error) {
+        console.log(error);
+      }) 
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    this.setState({ productList: [] });
+    this.state.recommendations.map((recommendation, index)=>(
+      axios.get('http://localhost:4000/products/find/'+ recommendation.product_id)
+        .then(response => {
+          this.setState(state => {
+            const list = state.productList.push(response.data[0]);
+            return {
+              list
+            };
+          });
+        })
+        .catch(function(error) {
+          console.log(error);
+        })
+    ));
+    console.log(this.state.productList);
+  }
+
+  addToCart(e) {
+    e.preventDefault();
+    const newProduct = this.state.product;
+    axios.post('http://localhost:4000/cart/add',newProduct)
+      .then(res => console.log(res.data));
+    window.alert("item added to cart")
+  }
 
   render() {
     let { theme } = this.props;
@@ -59,7 +112,59 @@ class Dashboard1 extends Component {
               <StatCards theme={theme}/>
 
               {/* Top Selling Products */}
-              <TableCard/>
+
+              <IconButton onClick={this.onSubmit}>
+                <Icon>arrow_right_alt</Icon>
+              </IconButton>
+
+
+
+              <Card elevation={3} className="pt-20 mb-24">
+              <div className="card-title px-24 mb-12">Top Picks For You</div>
+              <div className="overflow-auto">
+                <Table className="product-table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell className="px-24" colSpan={1}>
+                        ProductID
+                      </TableCell>
+                      <TableCell className="px-0" colSpan={2}>
+                        Name
+                      </TableCell>
+                      <TableCell className="px-0" colSpan={1}>
+                        AisleID
+                      </TableCell>
+                      <TableCell className="px-0" colSpan={1}>
+                        Add to cart
+                      </TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {this.state.productList.map((product, index) => (
+                      <TableRow key={index}>
+                        <TableCell className="px-0 capitalize" colSpan={1} align="left">
+                          {product.product_id}
+                        </TableCell>
+                        <TableCell className="px-0 capitalize" align="left" colSpan={2}>
+                          {product.product_name}
+                        </TableCell>
+                        <TableCell className="px-0" align="left" colSpan={1}>
+                          {product.aisle_id}
+                        </TableCell>
+                        <TableCell className="px-0" colSpan={1}>
+                          <IconButton onClick={(e) => {this.setState({ product: product}); this.addToCart(e)}}>
+                            <Icon color="primary">shopping_cart</Icon>
+                          </IconButton>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            </Card>
+
+
+
             </Grid>
 
             <Grid item lg={4} md={4} sm={12} xs={12}>
