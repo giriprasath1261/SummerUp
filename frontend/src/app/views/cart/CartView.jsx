@@ -19,8 +19,10 @@ class CartView extends Component {
   constructor(props) {
       super(props);
       this.state = {
-        groceries: []
+        groceries: [],
+        counter: ''
       }
+      this.GetCounter = this.GetCounter.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +33,11 @@ class CartView extends Component {
       .catch(function(error) {
         console.log(error);
       })
+  }
+
+  GetCounter(e){
+    e.preventDefault();
+    this.setState({counter: 12});
   }
 
   render() {
@@ -67,7 +74,16 @@ class CartView extends Component {
             </TableBody>
           </Table>
         </SimpleCard>
-
+        <center>
+        <br/>
+          <Button variant="contained" color="primary" onClick={this.GetCounter} >
+            Show Billing Counter
+          </Button>
+        <br/>
+        <br/>
+        <br/>
+        <h5> Go to counter number : {this.state.counter}</h5>
+        </center>
       </div>
     );
   }
