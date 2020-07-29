@@ -20,7 +20,7 @@ const StatCards = ({theme}) => {
             </div>
           </div>
           <Tooltip title="View Details" placement="top">
-            <IconButton>
+            <IconButton href="http://localhost:3000/grocery/aisle">
               <Icon>arrow_right_alt</Icon>
             </IconButton>
           </Tooltip>
