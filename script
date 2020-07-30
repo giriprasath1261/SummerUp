@@ -3,3 +3,4 @@ mongoimport --type csv -d summerup -c keywords --headerline --drop ./db/keywords
 mongoimport --type csv -d summerup -c recommendations --headerline --drop ./db/recommendations.csv
 mongoimport --type csv -d summerup -c aisles --headerline --drop ./db/aisles.csv
 mongoimport --type csv -d summerup -c departments --headerline --drop ./db/departments.csv
+mongoimport --type csv -d summerup -c counters --headerline --drop ./db/counters.csv

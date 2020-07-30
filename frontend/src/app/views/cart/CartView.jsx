@@ -44,24 +44,12 @@ class CartView extends Component {
       console.log(this.state.groceries)
     
   }
+
+  onDone(e){
+    window.alert("Thanks for shopping with Walmart");
+    window.location.replace("http://localhost:3000/dashboard/analytics");
+  }
   
-
-  // UpdateBillCounters(e){
-  //   e.preventDefault();
-  //   console.log(this.state.suggested_counter)
-  //   var cur_que = this.state.counters[this.state.suggested_counter].number_of_people+1
-  //   var cur_products = this.state.counters[this.state.suggested_counter].total_products+this.groceries.length
-  //   const updated_counter = {
-  //     counter_id : this.state.suggested_counter,
-  //     number_of_people : cur_que,
-  //     total_products : cur_products
-  //   }
-  //   console.log(updated_counter)
-  //   axios.post('http://localhost:4000/counters/update', updated_counter)
-  //   .then(res => console.log(res.data));
-
-  // }
-
   GetCounter(e){
     var current_basket = this.state.groceries.length
     console.log("Groceries")
@@ -74,10 +62,8 @@ class CartView extends Component {
             totaltime.push([ currentCounter.counter_id,(billing_time*currentCounter.total_products +
                                  buffer_time*currentCounter.number_of_people) ] )
         
-            // console.log(currentCounter.total_products)
           })
         totaltime.sort()
-        // console.log( "Total time")
         console.log(totaltime)
         var minval = totaltime[0][1];
         var opt_counter = 0;
@@ -89,7 +75,6 @@ class CartView extends Component {
             opt_counter = iter+1;
           }
         }
-        // console.log( "Min Value " + minval)
         console.log("Answer " + opt_counter)
         this.setState({suggested_counter: opt_counter });
         
@@ -115,9 +100,6 @@ class CartView extends Component {
           console.log(updated_counter)
           axios.post('http://localhost:4000/counters/update', updated_counter)
           .then(res => console.log(res.data));
-          
-          // window.alert("Go to counter number : " + opt_counter)
-
   }
 
   render() {
@@ -165,7 +147,38 @@ class CartView extends Component {
         <h3> Go to counter number : {this.state.suggested_counter}</h3>
         <br/>
         <br/>
+        <Button variant="contained" color="primary" onClick={this.onDone} >
+            Done
+        </Button>
+        <br/>
+        <br/>
         </center>
+        <SimpleCard title="Counters">
+          <Table style={{ whiteSpace: "pre" }}>
+            <TableHead>
+              <TableRow>
+                <TableCell className="px-0">CounterID</TableCell>
+                <TableCell className="px-0">Number of People</TableCell>
+                <TableCell className="px-0">Number of Products</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {this.state.counters.map((currentCounter, index) => (
+                <TableRow key={index}>
+                  <TableCell className="px-0 capitalize" align="left">
+                    {currentCounter.counter_id}
+                  </TableCell>
+                  <TableCell className="px-0 capitalize" align="left">
+                    {currentCounter.number_of_people}
+                  </TableCell>
+                  <TableCell className="px-0 capitalize" align="left">
+                    {currentCounter.total_products}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </SimpleCard>
       </div>
     );
   }
