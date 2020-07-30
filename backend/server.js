@@ -12,6 +12,7 @@ let Keyword = require('./models/keywords');
 let Aisle = require('./models/aisles');
 let Recommendation = require('./models/recommendations');
 let Cart = require('./models/cart');
+let Counters = require('./models/counters');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -109,6 +110,39 @@ userRoutes.route('/cart').get(function(req,res) {
 			res.json(carts);
 		}
 	});
+});
+
+//Get the current status of the Billing Counters
+userRoutes.route('/counters').get(function(req,res) {
+	Counters.find(function(err, counters) {
+		if(err) {
+			console.log(err);
+		} else {
+			res.json(counters);
+		}
+	});
+});
+//Updating the Counters Values
+userRoutes.route('/counters/update').post(function(req,res) {
+	let counter = new Counters(req.body);
+	// console.log(id,people,products)
+	Counters.update(
+		{"counter_id" : counter.counter_id} ,
+		{ 
+			$set : 
+			{
+				"number_of_people" : counter.number_of_people,
+				"total_products" : counter.total_products,
+			}
+		}
+	)
+		.then(counters => {
+			res.status(200).json({'Counters': 'Counters updated successfully'});
+		})
+		.catch(err => {
+			res.status(400).send('Error');
+		});
+
 });
 
 app.use('/',userRoutes);
