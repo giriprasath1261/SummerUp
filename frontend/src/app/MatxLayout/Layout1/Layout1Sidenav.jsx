@@ -129,17 +129,9 @@ class Layout1Sidenav extends Component {
                 <Icon> home </Icon>
                 <span className="pl-16"> Home </span>
               </MenuItem>
-              <MenuItem className="flex flex-middle" style={{ minWidth: 185 }}>
-                <Icon> settings </Icon>
-                <span className="pl-16"> Account Setting </span>
-              </MenuItem>
             </MatxMenu>
 
-            <Tooltip title="Profile">
-              <IconButtonWhite aria-label="Delete" className="" size="small">
-                <IconSmall>person</IconSmall>
-              </IconButtonWhite>
-            </Tooltip>
+            
             <Tooltip title="Sign out">
               <IconButtonWhite
                 aria-label="Delete"

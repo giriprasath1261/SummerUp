@@ -12,6 +12,12 @@ mongo
 ``` 
 This will open the mongo shell. Type in ```use summerup``` to create a new database called summerup.
 
+```
+run ./script
+mongo
+> db.keywords.find().forEach( function(el) { el.aisles=el.aisles.substring(1,el.aisles.length-1); el.aisles=el.aisles.split(','); db.keywords.save(el); });
+```
+
 Run Express:
 ```
 cd backend/

@@ -10,13 +10,20 @@ import {
 const StatCards = ({theme}) => {
   return (
     <Grid container spacing={3} className="mb-24">
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12} md={3}>
         <Card className="play-card p-sm-24 bg-paper" elevation={6}>
           <div className="flex flex-middle">
             <div className="ml-12">
+              <Icon
+                style={{
+                fontSize: "44px",
+                opacity: 0.6,
+                color: theme.palette.primary.main
+                }}
+              >
+                spa
+              </Icon>
               <h6 className="m-0 mt-4 text-primary font-weight-500">Groceries</h6>
-              <br/>
-              <img src="/assets/images/groceries.jpg" width="300" height="200"/>
             </div>
           </div>
           <Tooltip title="View Details" placement="top">
@@ -26,13 +33,20 @@ const StatCards = ({theme}) => {
           </Tooltip>
         </Card>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12} md={3}>
         <Card className="play-card p-sm-24 bg-paper" elevation={6}>
           <div className="flex flex-middle">
             <div className="ml-12">
+              <Icon
+                style={{
+                fontSize: "44px",
+                opacity: 0.6,
+                color: theme.palette.primary.main
+                }}
+              >
+                healing
+              </Icon>
               <h6 className="m-0 mt-4 text-primary font-weight-500">Medicines</h6>
-              <br/>
-              <img src="/assets/images/medicines.png" width="300" height="200"/>
             </div>
           </div>
           <Tooltip title="View Details" placement="top">
@@ -42,13 +56,20 @@ const StatCards = ({theme}) => {
           </Tooltip>
         </Card>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12} md={3}>
         <Card className="play-card p-sm-24 bg-paper" elevation={6}>
           <div className="flex flex-middle">
             <div className="ml-12">
+              <Icon
+                style={{
+                fontSize: "44px",
+                opacity: 0.6,
+                color: theme.palette.primary.main
+                }}
+              >
+                shopping_basket
+              </Icon>
               <h6 className="m-0 mt-4 text-primary font-weight-500">Fruits & Vegetables</h6>
-              <br/>
-              <img src="/assets/images/fruits.jpg" width="300" height="200"/>
             </div>
           </div>
           <Tooltip title="View Details" placement="top">
@@ -58,13 +79,20 @@ const StatCards = ({theme}) => {
           </Tooltip>
         </Card>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12} md={3}>
         <Card className="play-card p-sm-24 bg-paper" elevation={6}>
           <div className="flex flex-middle">
             <div className="ml-12">
-              <h6 className="m-0 mt-4 text-primary font-weight-500">Electronics</h6>
-              <br/>
-              <img src="/assets/images/electronics.jpeg" width="300" height="200"/>
+              <Icon
+                style={{
+                fontSize: "44px",
+                opacity: 0.6,
+                color: theme.palette.primary.main
+                }}
+              >
+                memory
+              </Icon>
+              <h6 className="m-0 mt-4 text-primary font-weight-500">Electronics</h6>              
             </div>
           </div>
           <Tooltip title="View Details" placement="top">

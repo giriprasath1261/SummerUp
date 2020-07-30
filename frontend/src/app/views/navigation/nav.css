@@ -1,0 +1,32 @@
+table{
+    margin-left: 25%;
+    float: left;
+}
+td{
+    height: 20px;
+    width: 20px;
+
+}
+#index{
+    display: inline-table;
+    margin-left: 10%;
+}
+button{
+    margin-left: 43%;
+}
+#aisle{
+    background-color: black;;
+}
+#text{
+    height: 20px;
+    width: 200px;
+}
+#path{
+    background-color: green;
+}
+#free{
+    background-color: lightgrey;
+}
+#final{
+    background-color: blueviolet;
+}

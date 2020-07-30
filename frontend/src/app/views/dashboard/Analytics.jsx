@@ -23,9 +23,9 @@ import { withStyles } from "@material-ui/styles";
 import 'react-slideshow-image/dist/styles.css'
 
 const slideImages = [
-  '/assets/images/slide-4.jpg',
-  '/assets/images/slide-5.jpg',
-  '/assets/images/slide-6.jpg'
+  '/assets/images/walmart.jpg',
+  '/assets/images/walmart2.jpg',
+  '/assets/images/walmart3.jpg'
 ];
 
 class Dashboard1 extends Component {
@@ -113,12 +113,6 @@ class Dashboard1 extends Component {
 
               {/* Top Selling Products */}
 
-              <IconButton onClick={this.onSubmit}>
-                <Icon>arrow_right_alt</Icon>
-              </IconButton>
-
-
-
               <Card elevation={3} className="pt-20 mb-24">
               <div className="card-title px-24 mb-12">Top Picks For You</div>
               <div className="overflow-auto">
@@ -160,6 +154,10 @@ class Dashboard1 extends Component {
                     ))}
                   </TableBody>
                 </Table>
+                <IconButton onClick={this.onSubmit}>
+                  <Icon>arrow_right_alt</Icon>
+                </IconButton>
+                <h6> Click here to see Top Picks </h6>
               </div>
             </Card>
 
